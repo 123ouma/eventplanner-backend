@@ -16,4 +16,4 @@ RUN chmod -R 775 storage bootstrap/cache database
 
 EXPOSE 10000
 
-CMD php artisan migrate:fresh --seed --force && php artisan serve --host=0.0.0.0 --port=${PORT}
+CMD php artisan config:clear && php artisan cache:clear && php artisan optimize:clear && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
